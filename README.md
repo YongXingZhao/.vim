@@ -1,6 +1,6 @@
 # .vim
 
-my vim config
+> my vim config
 
 ---
 
