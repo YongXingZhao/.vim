@@ -1,0 +1,11 @@
+# MacOS
+.DS_Store
+
+# Vim Swap File
+*.swp
+
+.netrwhist
+autoload
+plugged
+undodir
+vimrc
