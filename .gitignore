@@ -1,8 +1,9 @@
 # MacOS
 .DS_Store
 
-# Vim Swap File
+# Vim 
 *.swp
+.viminfo
 
 .netrwhist
 autoload
