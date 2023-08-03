@@ -1,6 +1,6 @@
 # .vim
 
-> my vim config
+# vim config
 
 ---
 
@@ -13,4 +13,8 @@
  |_| |_|\___|_|_|\___/     \_/  |_|_| |_| |_|
                                              
 ```
+
+## Plugins
+
+### [vim-easymotion](https://github.com/easymotion/vim-easymotion)
 
