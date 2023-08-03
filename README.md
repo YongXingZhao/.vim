@@ -16,5 +16,11 @@
 
 ## Plugins
 
+### [vim-airline](https://github.com/vim-airline/vim-airline)
+
+### [vim-airline-themes](https://github.com/vim-airline/vim-airline-themes#vim-airline-themes--)
+
+
+
 ### [vim-easymotion](https://github.com/easymotion/vim-easymotion)
 
