@@ -1,0 +1,1044 @@
+" 每个 "set" 行显示左侧选项的当前值
+" 在 "set" 行上按 <回车> 来执行。
+"            布尔选项将被切换。
+"            对于其他选项，您可以在按 <回车> 之前编辑该值。
+" 在帮助行上按 <回车> 来打开关于此选项的帮助窗口。
+" 在索引行上按 <回车> 来跳转到那里。
+" 在 "set" 行上按 <空格> 来刷新。 
+
+ 1 重要选项
+ 2 移动、搜索以及正则表达式
+ 3 标签
+ 4 显示文本
+ 5 语法、高亮和拼写
+ 6 多个窗口
+ 7 多个标签页
+ 8 终端
+ 9 使用鼠标
+10 图形用户界面
+11 打印
+12 消息和信息
+13 选择文本
+14 编辑文本
+15 Tab 和缩进
+16 折叠
+17 差异模式
+18 映射
+19 读写文件
+20 交换文件
+21 命令行编辑
+22 执行外部命令
+23 运行 make 并跳到错误（快速修复）
+24 语言特定
+25 多字节字符
+26 杂项
+
+
+ 1 重要选项
+
+compatible	非常兼容 Vi（不建议）
+ 	set nocp	cp
+cpoptions	指定 Vi 兼容性的标志列表
+ 	set cpo=aAceFsB
+insertmode	使用插入模式作为默认模式
+ 	set noim	im
+paste	粘贴模式，按本义插入输入的文本
+ 	set nopaste	paste
+pastetoggle	切换粘贴模式的按键序列
+ 	set pt=<F2>
+runtimepath	运行时文件和插件使用的目录列表
+ 	set rtp=/Users/yoxi/.vim,/Users/yoxi/.vim/plugged/vim-airline,/Users/yoxi/.vim/plugged/vim-airline-themes,/Users/yoxi/.vim/plugged/nerdtree,/Users/yoxi/.vim/plugged/indentLine,/Users/yoxi/.vim/plugged/undotree,/Users/yoxi/.vim/plugged/auto-pairs,/Users/yoxi/.vim/plugged/vim-autopep8,/Users/yoxi/.vim/plugged/rainbow,/Users/yoxi/.vim/plugged/vim-commentary,/Users/yoxi/.vim/plugged/vim-fugitive,/Users/yoxi/.vim/plugged/vim-surround,/Users/yoxi/.vim/plugged/vim-repeat,/Users/yoxi/.vim/plugged/vim-sneak,/Users/yoxi/.vim/plugged/vim-highlightedyank,/Users/yoxi/.vim/plugged/vim-easymotion,/Users/yoxi/.vim/plugged/vim-visual-multi,/Users/yoxi/.vim/plugged/tagbar,/Users/yoxi/.vim/plugged/nerdcommenter,/Users/yoxi/.vim/plugged/mathjax-support-for-mkdp,/Users/yoxi/.vim/plugged/markdown-preview.vim,/Users/yoxi/.vim/plugged/YouCompleteMe,/Users/yoxi/.vim/plugged/vim-ghost,/Users/yoxi/.vim/plugged/nvim-yarp,/Users/yoxi/.vim/plugged/vim-hug-neovim-rpc,/Applications/MacVim.app/Contents/Resources/vim/vimfiles,/Applications/MacVim.app/Contents/Resources/vim/runtime,/Applications/MacVim.app/Contents/Resources/vim/runtime/pack/dist/opt/matchit,/Applications/MacVim.app/Contents/Resources/vim/vimfiles/after,/Users/yoxi/.vim/plugged/indentLine/after,/Users/yoxi/.vim/after
+packpath	插件包使用的目录列表
+ 	set pp=/Users/yoxi/.vim,/Applications/MacVim.app/Contents/Resources/vim/vimfiles,/Applications/MacVim.app/Contents/Resources/vim/runtime,/Applications/MacVim.app/Contents/Resources/vim/vimfiles/after,/Users/yoxi/.vim/after
+helpfile	主帮助文件的名称
+ 	set hf=/Applications/MacVim.app/Contents/Resources/vim/runtime/doc/help.txt
+
+ 2 移动、搜索以及正则表达式
+
+whichwrap	指定哪些命令折行的标志列表
+ 	set ww=b,s
+startofline	许多跳转命令将光标移动到第一个非空的位置行中的字符
+ 	set sol	nosol
+paragraphs	用于分隔段落的 nroff 宏名
+ 	set para=IPLPPPQPP\ TPHPLIPpLpItpplpipbp
+sections	用于分隔小节的 nroff 宏名
+ 	set sect=SHNHH\ HUnhsh
+path	用于文件搜索的目录名称列表
+	(全局或局部于缓冲区)
+ 	set pa=.,/usr/include,,
+cdhome	不带参数的 :cd 进入主目录
+ 	set nocdh	cdh
+cdpath	目录名称列表用于 :cd
+ 	set cd=,,
+autochdir	切换到缓冲区的文件所在的目录
+ 	set noacd	acd
+autoshelldir	切换到终端缓冲区的 shell 工作的目录
+ 	set noasd	asd
+wrapscan	搜索在缓冲区折行的命令
+ 	set ws	nows
+incsearch	显示匹配部分键入的搜索命令
+ 	set is	nois
+magic	改变反斜杠在搜索模式中的使用方式
+ 	set magic	nomagic
+regexpengine	选择默认的正则表达式引擎
+ 	set re=0
+ignorecase	使用搜索模式时忽略大小写
+ 	set ic	noic
+smartcase	当模式包含大写字符时，覆盖 'ignorecase'
+ 	set scs	noscs
+casemap	用什么方法来改变字母的大小写
+ 	set cmp=internal,keepascii
+maxmempattern	模式匹配使用的最大内存（以千字节为单位）
+ 	set mmp=1000
+define	宏定义行的模式
+	(全局或局部于缓冲区)
+ 	set def=^\\s*#\\s*define
+include	包含文件行的模式
+	(局部于缓冲区)
+ 	set inc=^\\s*#\\s*include
+includeexpr	用于将包含行转换为文件名的表达式
+	(局部于缓冲区)
+ 	set inex=
+
+ 3 标签
+
+tagbsearch	在标签文件中使用二分法查找
+ 	set tbs	notbs
+taglength	标签名称中的有效字符数，默认为零
+ 	set tl=0
+tags	用于搜索标签的文件名列表
+	(全局或局部于缓冲区)
+ 	set tag=./tags,tags
+tagcase	在标签文件中搜索如何处理大小写: "followic" 跟随 'ignorecase', "ignore" 或者 "match"
+	(全局或局部于缓冲区)
+ 	set tc=followic
+tagrelative	标签文件里的文件名是相对于标签文件的路径
+ 	set tr	notr
+tagstack	:tag 命令将使用 tagstack
+ 	set tgst	notgst
+showfulltag	在插入模式补全标签时显示更多信息
+ 	set nosft	sft
+tagfunc	用于执行标签搜索的函数
+	(局部于缓冲区)
+ 	set tfu=
+cscopeprg	执行 cscope 的命令
+ 	set csprg=cscope
+cscopetag	标签命令使用 cscope
+ 	set nocst	cst
+cscopetagorder	0 或 1; ":cstag" 执行搜索的顺序
+ 	set csto=0
+cscopeverbose	在添加 cscope 数据库时给出消息
+ 	set nocsverb	csverb
+cscopepathcomp	显示路径的多少个部分
+ 	set cspc=0
+cscopequickfix	何时为 cscope 打开快速修复窗口
+ 	set csqf=
+cscoperelative	cscope 文件中的文件名是相对于该文件的
+ 	set nocsre	csre
+
+ 4 显示文本
+
+scroll	按 CTRL-U 和 CTRL-D 滚动的行数
+	(局部于窗口)
+ 	set scr=10
+smoothscroll	scroll by screen line
+	(局部于窗口)
+ 	set nosms	sms
+scrolloff	在光标周围显示的屏幕行数
+ 	set so=10
+wrap	长行折行
+	(局部于窗口)
+ 	set wrap	nowrap
+linebreak	在 'breakat' 中的字符处对长行折行
+	(局部于窗口)
+ 	set nolbr	lbr
+breakindent	在折行文本中保持缩进
+	(局部于窗口)
+ 	set nobri	bri
+breakindentopt	调整 breakindent 的行为
+	(局部于窗口)
+ 	set briopt=
+breakat	哪些字符可能导致换行
+ 	set brk=\ \	!@*-+;:,./?
+showbreak	放在折回的屏幕行之前的字符串
+ 	set sbr=
+sidescroll	水平滚动的最小列数
+ 	set ss=0
+sidescrolloff	保留在光标左右的最小列数
+ 	set siso=0
+display	包含 "lastline" 来显示最后一行，即使它显示不下
+	包含 "uhex" 以十六进制显示不可打印字符
+ 	set dy=truncate
+fillchars	用于状态行、折叠和填充行的字符
+ 	set fcs=vert:\|,fold:-,eob:~,lastline:@
+cmdheight	用于命令行的行数
+ 	set ch=2
+columns	显示的宽度
+ 	set co=119
+lines	显示的行数
+ 	set lines=48
+window	按 CTRL-F 和 CTRL-B 滚动的行数
+ 	set window=47
+lazyredraw	在执行宏时不要重新绘制
+ 	set lz	nolz
+redrawtime	'hlsearch' 和 :match 高亮的超时时间（以毫秒计）
+ 	set rdt=2000
+writedelay	每个字符写到显示的延时（以毫秒计；用于调试）
+ 	set wd=0
+list	以 ^I 显示 <Tab>, 以 $ 显示行尾
+	(局部于窗口)
+ 	set nolist	list
+listchars	用于 list 模式的字符串列表
+ 	set lcs=tab:>-,trail:-,eol:$,space:-
+number	对每一行显示行号
+	(局部于窗口)
+ 	set nu	nonu
+relativenumber	显示每行的相对行号
+	(局部于窗口)
+ 	set nornu	rnu
+numberwidth	用于行号的列数
+	(局部于窗口)
+ 	set nuw=4
+conceallevel	控制是否隐藏可隐藏文本
+	(局部于窗口)
+ 	set cole=2
+concealcursor	可隐藏光标行的文本的模式
+	(局部于窗口)
+ 	set cocu=inc
+
+ 5 语法、高亮和拼写
+
+background	"dark" 或者 "light"；背景色亮度
+ 	set bg=dark
+filetype	文件类型; 在设置时触发 FileType 事件
+	(局部于缓冲区)
+ 	set ft=
+syntax	使用中的语法高亮显示的名称
+	(局部于缓冲区)
+ 	set syn=
+synmaxcol	寻找语法项的最大列
+	(局部于缓冲区)
+ 	set smc=3000
+highlight	在不同场合使用哪些高亮提示
+ 	set hl=8:SpecialKey,~:EndOfBuffer,@:NonText,d:Directory,e:ErrorMsg,i:IncSearch,l:Search,y:CurSearch,m:MoreMsg,M:ModeMsg,n:LineNr,a:LineNrAbove,b:LineNrBelow,N:CursorLineNr,G:CursorLineSign,O:CursorLineFold,r:Question,s:StatusLine,S:StatusLineNC,c:VertSplit,t:Title,v:Visual,V:VisualNOS,w:WarningMsg,W:WildMenu,f:Folded,F:FoldColumn,A:DiffAdd,C:DiffChange,D:DiffDelete,T:DiffText,>:SignColumn,-:Conceal,B:SpellBad,P:SpellCap,R:SpellRare,L:SpellLocal,+:Pmenu,=:PmenuSel,[:PmenuKind,]:PmenuKindSel,{:PmenuExtra,}:PmenuExtraSel,x:PmenuSbar,X:PmenuThumb,*:TabLine,#:TabLineSel,_:TabLineFill,!:CursorColumn,.:CursorLine,o:ColorColumn,q:QuickFixLine,z:StatusLineTerm,Z:StatusLineTermNC
+hlsearch	高亮显示最后使用的搜索模式的所有匹配项
+ 	set hls	nohls
+wincolor	窗口使用的高亮组
+	(局部于窗口)
+ 	set wcr=
+termguicolors	为终端使用 GUI 颜色
+ 	set notgc	tgc
+cursorcolumn	突出显示光标的屏幕列
+	(局部于窗口)
+ 	set nocuc	cuc
+cursorline	突出显示光标的屏幕行
+	(局部于窗口)
+ 	set nocul	cul
+cursorlineopt	指定 'cursorline' 高亮显示的区域
+	(局部于窗口)
+ 	set culopt=both
+colorcolumn	要高亮的列
+	(局部于窗口)
+ 	set cc=
+spell	高亮拼写错误
+	(局部于窗口)
+ 	set nospell	spell
+spelllang	接受的语言列表
+	(局部于缓冲区)
+ 	set spl=en
+spellfile	"zg" 添加正确单词的文件
+	(局部于缓冲区)
+ 	set spf=
+spellcapcheck	定位句子尾部的模式
+	(局部于缓冲区)
+ 	set spc=[.?!]\\_[\\])'\"\	\ ]\\+
+spelloptions	更改拼写检查工作方式的标志
+	(局部于缓冲区)
+ 	set spo=
+spellsuggest	用于建议修正的方法
+ 	set sps=best
+mkspellmem	:mkspell 在压缩前使用的内存量
+ 	set msm=460000,2000,500
+
+ 6 多个窗口
+
+laststatus	0, 1 或 2；何时为最后一个窗口使用状态行
+ 	set ls=2
+statusline	用于状态行的替代格式
+ 	set stl=%!airline#statusline(1)
+equalalways	当添加/删除窗口时，使所有窗口的大小相同
+ 	set ea	noea
+eadirection	'equalalways' 的工作方向："ver", "hor" 或者 "both"
+ 	set ead=both
+winheight	当前窗口的最小行数
+ 	set wh=1
+winminheight	任何窗口的最小行数
+ 	set wmh=1
+winfixheight	保持窗口的高度
+	(局部于窗口)
+ 	set nowfh	wfh
+winfixwidth	保持窗口的宽度
+	(局部于窗口)
+ 	set nowfw	wfw
+winwidth	当前窗口的最小列数
+ 	set wiw=20
+winminwidth	任何窗口的最小列数
+ 	set wmw=1
+helpheight	帮助窗口的初始高度
+ 	set hh=20
+previewpopup	使用弹出窗口来预览
+ 	set pvp=
+previewheight	预览窗口的默认高度
+ 	set pvh=12
+previewwindow	标识预览窗口
+	(局部于窗口)
+ 	set nopvw	pvw
+hidden	当缓冲区不再显示在窗口中时，不要卸载它
+ 	set nohid	hid
+switchbuf	当向缓冲区跳转时可使用窗口: "useopen" 和/或 "split"
+ 	set swb=
+splitbelow	新窗口放在当前窗口的下面
+ 	set nosb	sb
+splitkeep	determines scroll behavior for split windows
+ 	set cursorspk	spk
+splitright	新窗口放在当前窗口的右边
+ 	set nospr	spr
+scrollbind	此窗口与其他已绑定的窗口一起滚动
+	(局部于窗口)
+ 	set noscb	scb
+scrollopt	'scrollbind' 的选项列表: "ver", "hor" 和/或 "jump"
+ 	set sbo=ver,jump
+cursorbind	此窗口的光标与其他已绑定的窗口一起移动
+	(局部于窗口)
+ 	set nocrb	crb
+termwinsize	终端窗口的大小
+	(局部于窗口)
+ 	set tws=
+termwinkey	终端窗口中 Vim 命令的前导键
+	(局部于窗口)
+ 	set twk=
+termwinscroll	终端窗口中用于回滚的最大行数
+	(局部于窗口)
+ 	set twsl=10000
+winptydll	winpty 动态库的名称
+ 	set winptydll=
+
+ 7 多个标签页
+
+showtabline	0, 1 或 2; 何时使用标签页行
+ 	set stal=2
+tabpagemax	-p 和 "tab all" 打开的最大标签页数
+ 	set tpm=10
+tabline	自定义标签页行
+ 	set tal=%!airline#extensions#tabline#get()
+guitablabel	为 GUI 自定义标签页的标签
+ 	set gtl=%M%t
+guitabtooltip	为 GUI 自定义标签页的工具提示
+ 	set gtt=
+
+ 8 终端
+
+term	使用中的终端的名字
+ 	set term=builtin_gui
+ttytype	'term' 的别名
+ 	set tty=builtin_gui
+ttybuiltin	首先检查内置的 termcaps
+ 	set tbi	notbi
+ttyfast	终端连接速度很快
+ 	set tf	notf
+xtermcodes	当检测到 xterm 时，请求终端键码
+ 	set xtermcodes	noxtermcodes
+weirdinvert	终端需要额外的重绘
+ 	set nowiv	wiv
+keyprotocol	what keyboard protocol to use for which terminal
+ 	set kpc=kitty:kitty,foot:kitty,wezterm:kitty,xterm:mok2
+esckeys	识别在插入模式下以 <Esc> 开头的键
+ 	set ek	noek
+scrolljump	一次滚动的最少行数
+ 	set sj=1
+ttyscroll	可以使用滚动代替重绘的最大行数
+ 	set tsl=999
+guicursor	指定光标在不同模式下的样子
+ 	set gcr=n-v-c:block-Cursor/lCursor,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+title	在窗口标题中显示信息
+ 	set title	notitle
+titlelen	窗口标题的 'columns' 的百分比
+ 	set titlelen=85
+titlestring	非空时，用于窗口标题的字符串
+ 	set titlestring=
+titleold	退出 Vim 时用于恢复标题的字符串
+ 	set titleold=Thanks\ for\ flying\ Vim
+icon	设置此窗口图标的文本
+ 	set icon	noicon
+iconstring	非空时，设置此窗口图标的文本
+ 	set iconstring=
+
+ 9 使用鼠标
+
+mouse	使用鼠标时的标志列表
+ 	set mouse=a
+mousefocus	带有鼠标指针的窗口成为当前窗口
+ 	set nomousef	mousef
+scrollfocus	带有鼠标指针的窗口随鼠标滚轮滚动
+ 	set noscf	scf
+mousehide	在输入时隐藏鼠标指针
+ 	set mh	nomh
+mousemoveevent	报告鼠标移动事件
+ 	set nomousemev	mousemev
+mousemodel	"extend", "popup" 或 "popup_setpos"; 鼠标右键用于什么
+ 	set mousem=popup_setpos
+mousetime	识别双击的最大时间（以毫秒计）
+ 	set mouset=500
+ttymouse	"xterm", "xterm2", "sgr" 等; 鼠标类型
+ 	set ttym=
+mouseshape	鼠标指针在不同模式下的样子
+ 	set mouses=i-r:beam,s:updown,sd:udsizing,vs:leftright,vd:lrsizing,m:no,ml:up-arrow,v:rightup-arrow
+
+10 图形用户界面
+
+guifont	在 GUI 中使用的字体名称列表
+ 	set gfn=JetBrains\ Mono:h14
+guifontwide	用于双宽度字符的字体名称列表
+ 	set gfw=
+antialias	使用平滑、抗锯齿的字体
+ 	set anti	noanti
+guioptions	指定 GUI 工作方式的标志列表
+ 	set go=gmrL
+guipty	对外部命令的 I/O 使用伪终端
+ 	set guipty	noguipty
+browsedir	"last", "buffer" 或 "current"; 文件浏览器使用哪个目录
+ 	set bsdir=last
+langmenu	菜单使用的语言
+ 	set langmenu=zh_CN.UTF-8
+menuitems	单个菜单中的最大项目数量
+ 	set mis=25
+linespace	字符之间使用的像素行数
+ 	set lsp=0
+columnspace	number of pixel columns to use between characters
+ 	set csp=0
+balloondelay	延迟指定毫秒后，气泡可能会弹出
+ 	set bdlay=600
+ballooneval	在 GUI 中使用气泡求值
+ 	set nobeval	beval
+balloonevalterm	在终端中使用气泡求值
+ 	set nobevalterm	bevalterm
+balloonexpr	在气泡求值中显示的表达式
+ 	set bexpr=
+transparency	transparency of the text background as a percent
+ 	set transparency=0
+blurradius	blur effect of the transparent background
+ 	set blurradius=0
+fullscreen	display vim in fullscreen mode
+ 	set nofullscreen	fullscreen
+fuoptions	control how fullscreen mode should behave
+ 	set fuoptions=maxvert,maxhorz
+macligatures	display ligatures
+ 	set nomacligatures	macligatures
+macmeta	use option as meta key
+	(local to buffer)
+macthinstrokes	use thin strokes
+ 	set nomacthinstrokes	macthinstrokes
+ 	set nommta	mmta
+
+11 打印
+
+printoptions	控制 :hardcopy 输出格式的项目列表
+ 	set popt=
+printdevice	用于 :hardcopy 的打印机名称
+ 	set pdev=
+printexpr	用于 :hardcopy 打印 PostScript 文件的表达式
+ 	set pexpr=macvim#PreviewConvertPostScript()
+printfont	:hardcopy 使用的字体名称
+ 	set pfn=courier
+printheader	用于 :hardcopy 的标头格式
+ 	set pheader=%<%f%h%m%=Page\ %N
+printencoding	用于 :hardcopy 打印 PostScript 文件的编码
+ 	set penc=
+printmbcharset	:hardcopy 用于 CJK 输出的 CJK 字符集
+ 	set pmbcs=
+printmbfont	:hardcopy 用于 CJK 输出的字体名称列表
+ 	set pmbfn=
+
+12 消息和信息
+
+terse	在 'shortmess' 中添加 's' 标志（不显示搜索消息）
+ 	set noterse	terse
+shortmess	使消息更短的标志列表
+ 	set shm=filnxtToOSc
+showcmd	show (partial) command keys in location given by 'showcmdloc'
+ 	set sc	nosc
+showcmdloc	location where to show the (partial) command keys for 'showcmd'
+ 	set sloc=last
+showmode	在状态行中显示当前模式
+ 	set smd	nosmd
+ruler	在每个窗口下方显示光标的位置
+ 	set ru	noru
+rulerformat	ruler 的替代格式
+ 	set ruf=
+report	报告已更改行数的阈值
+ 	set report=2
+verbose	等级越高，给出的信息越多
+ 	set vbs=0
+verbosefile	用于写入消息的文件
+ 	set vfile=
+more	当屏幕满时暂停显示清单
+ 	set more	nomore
+confirm	当命令失败时开启对话框
+ 	set cf	nocf
+errorbells	错误信息响铃
+ 	set noeb	eb
+visualbell	使用视觉铃声代替响铃
+ 	set novb	vb
+belloff	不要为这些原因响铃
+ 	set belloff=
+helplang	查找帮助的首选语言列表
+ 	set hlg=cn
+
+13 选择文本
+
+selection	"old", "inclusive" 或 "exclusive"; 如何选择文本
+ 	set sel=inclusive
+selectmode	"mouse", "key" 和/或 "cmd"; 何时启动选择模式而不是可视模式
+ 	set slm=
+clipboard	"unnamed": 像无名寄存器一样使用 * 寄存器
+	"autoselect": 将选择的文本始终放在剪贴板上
+ 	set cb=unnamed
+keymodel	"startsel" 和/或 "stopsel"; 特殊键可以做
+ 	set km=
+
+14 编辑文本
+
+undolevels	可以撤销的最大更改数
+	(全局或局部于缓冲区)
+ 	set ul=1000
+undofile	自动保存和恢复撤销历史
+ 	set udf	noudf
+undodir	撤销文件的目录列表
+ 	set udir=/Users/yoxi/.vim/undodir
+undoreload	缓冲区重新加载时为撤销保存的最大行数
+ 	set ur=10000
+modified	已经做出了修改，但没有被写入文件
+	(局部于缓冲区)
+ 	set nomod	mod
+readonly	缓冲区不会被写入
+	(局部于缓冲区)
+ 	set noro	ro
+modifiable	可以对文本进行更改
+	(局部于缓冲区)
+ 	set ma	noma
+textwidth	超过行长度就断行
+	(局部于缓冲区)
+ 	set tw=0
+wrapmargin	断行开始的右边距
+	(局部于缓冲区)
+ 	set wm=0
+backspace	指定 <BS>, CTRL-W 等在插入模式下可以做什么
+ 	set bs=indent,eol,start
+comments	定义注释行长什么样
+	(局部于缓冲区)
+ 	set com=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+formatoptions	控制自动格式化如何工作的标志列表
+	(局部于缓冲区)
+ 	set fo=tcq
+formatlistpat	识别编号列表的模式
+	(局部于缓冲区)
+ 	set flp=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+formatexpr	用 "gq" 格式化行时使用的表达式
+	(局部于缓冲区)
+ 	set fex=
+complete	指定使用 CTRL-N 和 CTRL-P 进行插入模式补全的工作方式
+	(局部于缓冲区)
+ 	set cpt=.,w,b,u,t,i
+completeopt	是否在插入模式补全时使用弹出菜单
+ 	set cot=preview,menuone
+completepopup	插入模式补全信息弹框的选项
+ 	set cpp=
+pumheight	弹出菜单的最大高度
+ 	set ph=0
+pumwidth	弹出菜单的最小宽度
+ 	set pw=15
+completefunc	用于插入模式补全的用户定义函数
+	(局部于缓冲区)
+ 	set cfu=
+omnifunc	用于特定文件类型的插入模式补全的函数
+	(局部于缓冲区)
+ 	set ofu=
+dictionary	用于关键字补全的字典文件列表
+	(全局或局部于缓冲区)
+ 	set dict=
+thesaurus	用于关键字补全的同义词字典文件列表
+	(全局或局部于缓冲区)
+ 	set tsr=
+thesaurusfunc	用于同义词字典补全的函数
+	(全局或局部于缓冲区)
+ 	set tsrfu=
+infercase	调整关键字补全匹配的大小写
+	(局部于缓冲区)
+ 	set noinf	inf
+digraph	支持使用 c1 <BS> c2 输入二合字符
+ 	set nodg	dg
+tildeop	"~"命令表现得像操作符
+ 	set notop	top
+operatorfunc	"g@" 操作符调用的函数
+ 	set opfunc=
+showmatch	当插入括号时，短暂地跳转到匹配它的括号
+ 	set sm	nosm
+matchtime	显示 'showmatch' 的匹配的时长（以十分之一秒计）
+ 	set mat=5
+matchpairs	"%" 命令匹配的对列表
+	(局部于缓冲区)
+ 	set mps=(:),{:},[:]
+joinspaces	连接行时，在 '.' 后面添加两个空格
+ 	set js	nojs
+nrformats	"alpha", "octal", "hex", "bin" 和/或 "unsigned"
+	CTRL-A 和 CTRL-X 命令识别的数字的格式
+	(局部于缓冲区)
+ 	set nf=bin,hex
+
+15 Tab 和缩进
+
+tabstop	<Tab> 在文本中代表的空格数
+	(局部于缓冲区)
+ 	set ts=4
+shiftwidth	每步（自动）缩进所使用的空格数
+	(局部于缓冲区)
+ 	set sw=4
+vartabstop	tab 代表的空格数的列表
+	(局部于缓冲区)
+ 	set vts=
+varsofttabstop	软制表符代表的空格数的列表
+	(局部于缓冲区)
+ 	set vsts=
+smarttab	用 <Tab> 键缩进时插入 'shiftwidth' 个空格
+ 	set sta	nosta
+softtabstop	如果非零，为 <Tab> 插入的空格数
+	(局部于缓冲区)
+ 	set sts=4
+shiftround	用 "<<" 和 ">>" 缩进时，插入 'shiftwidth' 整数倍个空格
+ 	set nosr	sr
+expandtab	在插入模式下将 <Tab> 展开为空格
+	(局部于缓冲区)
+ 	set noet	et
+autoindent	自动设置新行缩进
+	(局部于缓冲区)
+ 	set ai	noai
+smartindent	智能自动缩进
+	(局部于缓冲区)
+ 	set si	nosi
+cindent	为 C 代码启用特定的缩进
+	(局部于缓冲区)
+ 	set nocin	cin
+cinoptions	C 风格缩进的选项
+	(局部于缓冲区)
+ 	set cino=
+cinkeys	在插入模式下触发 C 风格缩进的键
+	(局部于缓冲区)
+ 	set cink=0{,0},0),0],:,0#,!^F,o,O,e
+cinwords	导致更多 C 风格缩进的单词列表
+	(局部于缓冲区)
+ 	set cinw=if,else,while,do,for,switch
+cinscopedecls	cino-g 使用的作用域声明名称列表
+	(局部于缓冲区)
+ 	set cinsd=public,protected,private
+indentexpr	用于获取一行缩进的表达式
+	(局部于缓冲区)
+ 	set inde=
+indentkeys	在插入模式下使用 'indentexpr' 触发缩进的键
+	(局部于缓冲区)
+ 	set indk=0{,0},0),0],:,0#,!^F,o,O,e
+copyindent	为缩进从上一行复制空白字符
+	(局部于缓冲区)
+ 	set noci	ci
+preserveindent	在更改缩进时保留空白类型
+	(局部于缓冲区)
+ 	set nopi	pi
+lisp	启用 lisp 模式
+	(局部于缓冲区)
+ 	set nolisp	lisp
+lispwords	改变 lisp 如何缩进的单词
+ 	set lw=defun,define,defmacro,set!,lambda,if,case,let,flet,let*,letrec,do,do*,define-syntax,let-syntax,letrec-syntax,destructuring-bind,defpackage,defparameter,defstruct,deftype,defvar,do-all-symbols,do-external-symbols,do-symbols,dolist,dotimes,ecase,etypecase,eval-when,labels,macrolet,multiple-value-bind,multiple-value-call,multiple-value-prog1,multiple-value-setq,prog1,progv,typecase,unless,unwind-protect,when,with-input-from-string,with-open-file,with-open-stream,with-output-to-string,with-package-iterator,define-condition,handler-bind,handler-case,restart-bind,restart-case,with-simple-restart,store-value,use-value,muffle-warning,abort,continue,with-slots,with-slots*,with-accessors,with-accessors*,defclass,defmethod,print-unreadable-object
+lispoptions	options for Lisp indenting
+ 	set lop=
+
+16 折叠
+
+foldenable	取消设置以打开所有折叠
+	(局部于窗口)
+ 	set fen	nofen
+foldlevel	等级比这个数字高的折叠将被关闭
+	(局部于窗口)
+ 	set fdl=0
+foldlevelstart	开始编辑文件时，'foldlevel' 的值
+ 	set fdls=-1
+foldcolumn	用来指示折叠的列的宽度
+	(局部于窗口)
+ 	set fdc=0
+foldtext	用于显示已关闭折叠的表达式
+	(局部于窗口)
+ 	set fdt=foldtext()
+foldclose	设置为 "all" 来在光标离开时关闭折叠
+ 	set fcl=
+foldopen	指定会打开折叠的命令
+ 	set fdo=block,hor,mark,percent,quickfix,search,tag,undo
+foldminlines	可关闭折叠所需的最小屏幕行数
+	(局部于窗口)
+ 	set fml=1
+commentstring	注释的模板，用于放置折叠标记
+ 	set cms=/*%s*/
+foldmethod	折叠类型："manual", "indent", "expr", "marker", 
+	"syntax" 或者 "diff"
+	(局部于窗口)
+ 	set fdm=manual
+foldexpr	当 'foldmethod' 为 "expr" 时使用的表达式
+	(局部于窗口)
+ 	set fde=0
+foldignore	当 'foldmethod' 为 "indent" 时用于忽略行
+	(局部于窗口)
+ 	set fdi=#
+foldmarker	当 'foldmethod' 为 "marker" 时所使用的标记
+	(局部于窗口)
+ 	set fmr={{{,}}}
+foldnestmax	当 'foldmethod' 为 "indent" 或 "syntax" 时的最大折叠深度
+	(局部于窗口)
+ 	set fdn=20
+
+17 差异模式
+
+diff	对当前窗口使用差异模式
+	(局部于窗口)
+ 	set nodiff	diff
+diffopt	使用差异模式的选项
+ 	set dip=internal,filler,closeoff
+diffexpr	用于获取差异文件的表达式
+ 	set dex=
+patchexpr	用于给文件打补丁的表达式
+ 	set pex=
+
+18 映射
+
+maxmapdepth	最大映射深度
+ 	set mmd=1000
+remap	识别已映射键中的映射
+ 	set remap	noremap
+timeout	允许在映射中途超时
+ 	set to	noto
+ttimeout	允许在键码中途超时
+ 	set ttimeout	nottimeout
+timeoutlen	'timeout' 的时间（以毫秒计）
+ 	set tm=1000
+ttimeoutlen	'ttimeout' 的时间（以毫秒计）
+ 	set ttm=100
+
+19 读写文件
+
+modeline	读取文件时是否使用 modeline 里的设置
+	(局部于缓冲区)
+ 	set ml	noml
+modelineexpr	允许从 modeline 中设置表达式选项
+ 	set nomle	mle
+modelines	为 modeline 而检查的行数
+ 	set mls=5
+binary	二进制文件编辑
+	(局部于缓冲区)
+ 	set nobin	bin
+endofline	文件的最后一行有换行符
+	(局部于缓冲区)
+ 	set eol	noeol
+endoffile	last line in the file followed by CTRL-Z
+	(局部于缓冲区)
+ 	set noeof	eof
+fixendofline	修复文本文件末尾缺少换行符的问题
+	(局部于缓冲区)
+ 	set fixeol	nofixeol
+bomb	在文件前加上字节顺序标记
+	(局部于缓冲区)
+ 	set nobomb	bomb
+fileformat	换行符格式： "dos", "unix" 或 "mac"
+	(局部于缓冲区)
+ 	set ff=unix
+fileformats	编辑文件时要检查的文件格式列表
+ 	set ffs=unix,dos
+textmode	已废止，用 'fileformat'
+	(局部于缓冲区)
+ 	set notx	tx
+textauto	已废止，用 'fileformats'
+ 	set ta	nota
+write	允许写入文件
+ 	set write	nowrite
+writebackup	覆盖文件前先写入备份文件
+ 	set wb	nowb
+backup	覆盖文件后保留备份
+ 	set nobk	bk
+backupskip	不备份的文件的模式
+ 	set bsk=/private/tmp/*,/var/folders/b8/v3tgg2ss3ys521mx5b0c5zmh0000gn/T/*
+backupcopy	通过复制还是重命名已有文件进行备份
+	(全局或局部于缓冲区)
+ 	set bkc=auto
+backupdir	存放备份文件的目录列表
+ 	set bdir=.,/Users/yoxi/tmp,/Users/yoxi/
+backupext	备份文件使用的扩展名
+ 	set bex=~
+autowrite	在离开修改过的缓冲区时自动写入文件
+ 	set aw	noaw
+autowriteall	类似于 'autowrite'，但适用于更多命令
+ 	set noawa	awa
+writeany	写文件时总是不需要确认
+ 	set nowa	wa
+autoread	在 Vim 之外修改了文件时，自动读取文件
+	(全局或局部于缓冲区)
+ 	set ar	noar
+patchmode	保存最旧版本的文件；指定文件扩展名
+ 	set pm=
+fsync	文件写入后强制同步到磁盘
+ 	set fs	nofs
+shortname	使用 8.3 格式的文件名
+	(局部于缓冲区)
+ 	set nosn	sn
+cryptmethod	写入文件时使用的加密算法：zip, blowfish 或 blowfish2
+	(局部于缓冲区)
+ 	set cm=blowfish2
+
+20 交换文件
+
+directory	交换文件的目录列表
+ 	set dir=.,/Users/yoxi/tmp,/var/tmp,/tmp
+swapfile	对这个缓冲区使用交换文件
+	(局部于缓冲区)
+ 	set swf	noswf
+swapsync	"sync", "fsync" 或留空; 将交换文件刷新到磁盘的方式
+ 	set sws=fsync
+updatecount	导致交换文件更新的字符数
+ 	set uc=200
+updatetime	更新交换文件前所需的毫秒数
+ 	set ut=4000
+maxmem	单个缓冲区使用的最大内存量（以千字节为单位）
+ 	set mm=15362856
+maxmemtot	所有缓冲区使用的最大内存量（以千字节为单位）
+ 	set mmt=15362856
+
+21 命令行编辑
+
+history	记住的命令行数
+ 	set hi=1000
+wildchar	触发命令行扩展的键
+ 	set wc=9
+wildcharm	类似 'wildchar'，但也可以在映射中使用
+ 	set wcm=0
+wildmode	指定命令行如何补全
+ 	set wim=full
+suffixes	优先级低的文件扩展名列表
+ 	set su=.bak,~,.o,.h,.info,.swp,.obj
+suffixesadd	搜索文件时添加的文件扩展名列表
+	(局部于缓冲区)
+ 	set sua=
+wildignore	文件名补全所忽略文件的模式列表
+ 	set wig=
+fileignorecase	使用文件名时忽略大小写
+ 	set fic	nofic
+wildignorecase	补全文件名时忽略大小写
+ 	set nowic	wic
+wildmenu	命令行补全时显示匹配列表
+ 	set wmnu	nowmnu
+cedit	用于打开命令行窗口的键
+ 	set cedit=
+cmdwinheight	命令行窗口的高度
+ 	set cwh=7
+
+22 执行外部命令
+
+shell	用于外部命令的 shell 程序的名称
+ 	set sh=/bin/zsh
+shellquote	用于包围 shell 命令的字符
+ 	set shq=
+shellxquote	类似 'shellquote'，但包含重定向
+ 	set sxq=
+shellxescape	'shellxquote' 为 ( 时需要转义的字符
+ 	set sxe=
+shellcmdflag	'shell' 执行命令的参数
+ 	set shcf=-c
+shellredir	用于将命令输出重定向到文件
+ 	set srr=>%s\ 2>&1
+shelltemp	对 shell 命令使用临时文件而不是管道
+ 	set stmp	nostmp
+equalprg	用于 "=" 命令的程序
+	(全局或局部于缓冲区)
+ 	set ep=
+formatprg	用 "gq" 命令格式化代码时使用的程序
+ 	set fp=
+keywordprg	用于 "K" 命令的程序
+ 	set kp=man\ -s
+warn	当使用 shell 命令并且缓冲区有修改时发出警告
+ 	set warn	nowarn
+
+23 运行 make 并跳到错误（快速修复）
+
+errorfile	包含错误消息的文件的名称
+ 	set ef=errors.err
+errorformat	错误消息的格式列表
+	(全局或局部于缓冲区)
+ 	set efm=%*[^\"]\"%f\"%*\\D%l:\ %m,\"%f\"%*\\D%l:\ %m,%-Gg%\\?make[%*\\d]:\ ***\ [%f:%l:%m,%-Gg%\\?make:\ ***\ [%f:%l:%m,%-G%f:%l:\ (Each\ undeclared\ identifier\ is\ reported\ only\ once,%-G%f:%l:\ for\ each\ function\ it\ appears\ in.),%-GIn\ file\ included\ from\ %f:%l:%c:,%-GIn\ file\ included\ from\ %f:%l:%c\\,,%-GIn\ file\ included\ from\ %f:%l:%c,%-GIn\ file\ included\ from\ %f:%l,%-G%*[\ ]from\ %f:%l:%c,%-G%*[\ ]from\ %f:%l:,%-G%*[\ ]from\ %f:%l\\,,%-G%*[\ ]from\ %f:%l,%f:%l:%c:%m,%f(%l):%m,%f:%l:%m,\"%f\"\\,\ line\ %l%*\\D%c%*[^\ ]\ %m,%D%*\\a[%*\\d]:\ Entering\ directory\ %*[`']%f',%X%*\\a[%*\\d]:\ Leaving\ directory\ %*[`']%f',%D%*\\a:\ Entering\ directory\ %*[`']%f',%X%*\\a:\ Leaving\ directory\ %*[`']%f',%DMaking\ %*\\a\ in\ %f,%f\|%l\|\ %m
+makeprg	用于 ":make" 命令的程序
+	(全局或局部于缓冲区)
+ 	set mp=make
+shellpipe	用于将 ":make" 的输出放在错误文件中的字符串
+ 	set sp=2>&1\|\ tee
+makeef	'makeprg' 命令的错误文件的名称
+ 	set mef=
+grepprg	用于 ":grep" 命令的程序
+	(全局或局部于缓冲区)
+ 	set gp=grep\ -n\ $*\ /dev/null
+grepformat	'grepprg' 的输出格式列表
+ 	set gfm=%f:%l:%m,%f:%l%m,%f\ \ %l%m
+makeencoding	":make" 和 ":grep" 输出的编码
+	(全局或局部于缓冲区)
+ 	set menc=
+quickfixtextfunc	用于在快速修复窗口中显示文本的函数
+ 	set qftf=
+
+24 语言特定
+
+isfname	指定文件名中的字符
+ 	set isf=@,48-57,/,.,-,_,+,,,#,$,%,~,=
+isident	指定标识符中的字符
+ 	set isi=@,48-57,_,192-255
+iskeyword	指定关键字中的字符
+	(局部于缓冲区)
+ 	set isk=@,48-57,_,192-255
+isprint	指定可打印字符
+ 	set isp=@,161-255
+quoteescape	指定字符串中的转义字符
+	(局部于缓冲区)
+ 	set qe=\\
+rightleft	从右到左显示缓冲区
+	(局部于窗口)
+ 	set norl	rl
+rightleftcmd	何时从右到左编辑命令行
+	(局部于窗口)
+ 	set rlc=search
+revins	倒序插入字符
+ 	set nori	ri
+allowrevins	在插入和命令行模式下允许 CTRL-_ 切换 'revins'
+ 	set noari	ari
+aleph	希伯来字母表第一个字母的 ASCII 码
+ 	set al=224
+hkmap	使用希伯来语键盘映射
+ 	set nohk	hk
+hkmapp	使用希伯来语的语音键盘映射
+ 	set nohkp	hkp
+arabic	准备编辑阿拉伯语文本
+	(局部于窗口)
+ 	set noarab	arab
+arabicshape	阿拉伯语的字形重整
+ 	set arshape	noarshape
+termbidi	终端支持双向文本
+ 	set notbidi	tbidi
+keymap	键盘映射名称
+ 	set kmp=
+langmap	在普通模式下转换的字符列表
+ 	set lmap=
+langremap	对映射的字符应用 'langmap'
+ 	set nolrm	lrm
+imdisable	设置时总不使用输入法；覆盖以下输入法选项
+ 	set imd	noimd
+iminsert	插入模式：1：使用 :lamp；2：使用输入法；0：都不用
+	(局部于窗口)
+ 	set imi=0
+imstyle	输入法样式：0：on-the-spot；1：over-the-spot
+ 	set imst=0
+imsearch	输入搜索模式时：1：使用 :lamp；2：使用输入法；0：都不用
+	(局部于窗口)
+ 	set ims=-1
+imcmdline	如果设置，开始编辑命令行时总是使用输入法
+ 	set noimc	imc
+imstatusfunc	获取输入法状态的函数
+ 	set imsf=
+imactivatefunc	启用/禁用输入法的函数
+ 	set imaf=
+
+25 多字节字符
+
+encoding	在 Vim 中使用的字符编码："latin1", "utf-8",
+	"euc-jp", "big5" 等
+ 	set enc=utf-8
+fileencoding	当前文件的字符编码
+	(局部于缓冲区)
+ 	set fenc=
+fileencodings	自动检测字符编码
+ 	set fencs=usc-bom,utf-8,gb18030,latin1
+termencoding	终端使用的字符编码
+ 	set tenc=utf-8
+charconvert	用于字符编码转换的表达式
+ 	set ccv=
+delcombine	删除组合字符本身
+ 	set nodeco	deco
+maxcombine	显示的最大字符组合数
+ 	set mco=2
+ambiwidth	宽度有歧义字符的宽度
+ 	set ambw=single
+emoji	表情字符视作全宽
+ 	set emo	noemo
+
+26 杂项
+
+virtualedit	何时使用虚拟编辑："block", "insert", "all" 和/或 "onemore"
+ 	set ve=
+eventignore	要忽略的自动命令事件列表
+ 	set ei=
+loadplugins	启动时加载插件脚本
+ 	set lpl	nolpl
+exrc	启用读取在当前目录下的 .vimrc/.exrc/.gvimrc
+ 	set noex	ex
+secure	在当前目录下使用脚本文件时更安全
+ 	set nosecure	secure
+gdefault	打开 ":substitute" 的 'g' 标志
+ 	set nogd	gd
+edcompatible	":substitute" 的 'g' and 'c' 标志用作开关切换
+ 	set noed	ed
+maxfuncdepth	函数调用的最大深度
+ 	set mfd=100
+sessionoptions	指定放入会话文件的内容的单词列表
+ 	set ssop=blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal
+viewoptions	指定 :mkview 保存的内容的单词列表
+ 	set vop=folds,options,cursor,curdir
+viewdir	:mkview 存放文件的目录
+ 	set vdir=/Users/yoxi/.vim/view
+viminfo	指定在 viminfo 文件中写入的内容的列表
+ 	set vi='100,<50,s10,h,n~/.vim/.viminfo,!
+viminfofile	viminfo 文件使用的文件名
+ 	set vif=
+bufhidden	当缓冲区不再位于窗口中时，会发生什么
+	(局部于缓冲区)
+ 	set bh=
+buftype	空, "nofile", "nowrite", "quickfix" 等; 缓冲区类型
+	(局部于缓冲区)
+ 	set bt=
+buflisted	缓冲区是否显示在缓冲区列表中
+	(局部于缓冲区)
+ 	set bl	nobl
+debug	设置为 "msg" 以查看所有错误消息
+ 	set debug=
+signcolumn	是否显示标号列
+	(局部于窗口)
+ 	set scl=auto
+luadll	Lua 动态库的名字
+ 	set luadll=/opt/homebrew/lib/liblua.dylib
+perldll	Perl 动态库的名字
+ 	set perldll=/System/Library/Perl/5.30/darwin-thread-multi-2level/CORE/libperl.dylib
+pyxversion	是否使用 Python 2 和 3
+ 	set pyx=0
+pythondll	Python 2 动态库的名字
+ 	set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
+pythonhome	Python 2 主目录的名字
+ 	set pythonhome=
+pythonthreedll	Python 3 动态库的名字
+ 	set pythonthreedll=/opt/homebrew/Frameworks/Python.framework/Versions/3.11/Python
+pythonthreehome	Python 3 主目录的名字
+ 	set pythonthreehome=
+rubydll	Ruby 动态库的名字
+ 	set rubydll=/opt/homebrew/opt/ruby/lib/libruby.dylib
+tcldll	Tcl 动态库的名字
+ 	set tcldll=
+mzschemedll	MzScheme 动态库的名字
+ 	set mzschemedll=
+mzschemegcdll	MzScheme GC 动态库的名字
+ 	set mzschemegcdll=
