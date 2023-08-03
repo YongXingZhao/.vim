@@ -4,9 +4,8 @@
 # Vim 
 *.swp
 .viminfo*
-
 .netrwhist
 autoload
 plugged
 undodir
-vimrc
+backup
