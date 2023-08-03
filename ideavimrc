@@ -48,15 +48,22 @@ map <leader>cr <Action>(ChooseRunConfiguration)
 "" Map <leader>d to start debug
 map <leader>d <Action>(Debug)
 
-"" Map \b to toggle the breakpoint on the current line
+"" Map \b jo toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
 
 """ Idea specific settings ------------------
-" 自动连接
+
+" @use: press J (shift+j) on aline or a selected block of text to join the lines together. 
+" @details: https://github.com/JetBrains/ideavim/blob/master/doc/ideajoin-examples.md
 set ideajoin
+
+" set status bar color
 set ideastatusicon=gray
-set idearefactormode=keep
+
+" use visual mode during refactoring
+set idearefactormode=visual
+
 set showmode
 
 " Find more examples here: https://jb.gg/share-ideavimrc
