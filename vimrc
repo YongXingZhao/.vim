@@ -301,8 +301,49 @@ call plug#begin('~/.vim/plugged')
 
 
 """****** @vim-airline ******
-plug 'vim-airline/vim-airline'
-plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+"""------ @vim-airline ------
+"" When the plugin is correctly loaded, there will be a nice statusline at the bottom of each vim window.
+
+"" airline theme
+let g:airline_theme = 'random'
+" let g:airline#themes#random#palette = {}
+
+"use powerline font
+let g:airline_powerline_fonts = 1
+
+"" Automatically displays all buffers when there's only one tab open.
+let g:airline#extensions#ale#enabled = 1
+
+"show window tabs and buffer
+let g:airline#extensions#tabline#enabled = 1
+"show buffer number
+let g:airline#extensions#tabline#buffer_nr_show = 1
+"overflow marker
+let g:airline#extensions#tabline#overflow_marker = '…'
+
+"" Separators can be configured independently for the tabline, so here is how you can define "straight" tabs:
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+"" formatter airline use path
+let g:airline#extensions#tabline#formatter = 'default'
+
+"turn off status bar show space count
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#symbol = '!'
+
+
+""symbol replace
+let g:airline#extensions#coc#error_symbol = '😣'
+let g:airline#extensions#coc#warning_symbol = '😥'
+
+"" highlight cache
+let g:airline_highlighting_cache = 1
+
+
+
+
+
 
 
 " Initialize plugin system
