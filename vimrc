@@ -1,5 +1,6 @@
-"source $vimruntime/vimrc_example.vim
+""source $vimruntime/vimrc_example.vim
 "
+"map window operation
 """----------------------------------------
 """=========== #Key Mapping ============
 """----------------------------------------
@@ -29,6 +30,14 @@ nnoremap <leader>wh <C-W>h
 nnoremap <leader>wl <C-W>l
 nnoremap <leader>ws <C-W>s
 nnoremap <leader>wv <C-W>v
+
+nnoremap <Up> :resize+10<CR>
+nnoremap <Down> :resize-10<CR>
+nnoremap <Left> :vertical resize-10<CR>
+nnoremap <Right> :vertical resize+10<CR>
+
+"" tab
+nnoremap gn :tabnew<CR>
 
 
 "toggle buffer
@@ -136,7 +145,6 @@ set cursorcolumn
 "" Highlight the screen line of the cursor
 set cursorline
 " hi cursorline guibg=#00ff00
-
 
 
 """****** 6. Multiple Windows ******
@@ -330,6 +338,14 @@ set viminfofile=~/.vim/.viminfo
 "" Enable 256-color support
 set t_co=256
 
+"" cursor line
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+set autochdir
+"" go back to line"
+au BufReadPost * if line("''\"") > 1 && line("'\"") <= line("$") | exec "normal! g'\"" | endif
 
 " edit .vimrc after source vimrc
 "autocmd bufwritepost $MYVIMRC source $MYVIMRC
@@ -385,21 +401,51 @@ let g:airline#themes#random#palette = {}
 "use powerline font
 let g:airline_powerline_fonts = 1
 
+"" in section B of the status line display the CWD
+" let g:airline_section_b = '%{getcwd()}'
+
+"" highlight cache
+let g:airline_highlighting_cache = 1
+
 "" Automatically displays all buffers when there's only one tab open.
 let g:airline#extensions#ale#enabled = 1
 
 "show window tabs and buffer
 let g:airline#extensions#tabline#enabled = 1
-"show buffer number
+"" show 'X' at the end of the tabline 
+let g:airline#extensions#tabline#show_close_button = 1
+"" put text here like TABS to denote tabs
+let g:airline#extensions#tabline#tabs_label = ''
+"" put text here like BUFFERS to denote buffers
+let g:airline#extensions#tabline#buffers_label = '%{strftime("%y-%m-%d %I:%M:%S %p")}'
+"" disable file paths in the tab
+let g:airline#extensions#tabline#fnamemod = ':t'
+"" show tab numbers on the right
+let g:airline#extensions#tabline#show_tab_count = 1                          
+"" show buffers in the tabline
+let g:airline#extensions#tabline#show_buffers = 1
+"" disable tab numbers
+let g:airline#extensions#tabline#show_tab_nr = 0
+" show buffer number
 let g:airline#extensions#tabline#buffer_nr_show = 1
 "overflow marker
 let g:airline#extensions#tabline#overflow_marker = '…'
+"" minimum of 2 tabs needed to display the tabline
+let g:airline#extensions#tabline#tab_min_count = 2
+"" disables the buffer name that displays on the right of the tabline
+let g:airline#extensions#tabline#show_splits = 0
+" disables the weird ornage arrow on the tabline
+" let g:airline#extensions#tabline#show_tab_type = 0
 
 "" Separators can be configured independently for the tabline, so here is how you can define "straight" tabs:
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = '|'
+" let g:airline#extensions#tabline#
+
 "" formatter airline use path
-let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 "turn off status bar show space count
 let g:airline#extensions#whitespace#enabled = 0
@@ -408,9 +454,6 @@ let g:airline#extensions#whitespace#symbol = '!'
 ""symbol replace
 let g:airline#extensions#coc#error_symbol = '😣'
 let g:airline#extensions#coc#warning_symbol = '😥'
-
-"" highlight cache
-let g:airline_highlighting_cache = 1
 
 
 """****** @vim-easymotion ******
