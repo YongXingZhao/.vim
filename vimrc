@@ -5,7 +5,7 @@
 """=========== #Key Mapping ============
 """----------------------------------------
 
-" set leader key 
+" set Leader key 
 let mapleader=" "
 
 " map mobile operation
@@ -343,10 +343,6 @@ let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-set autochdir
-"" go back to line"
-au BufReadPost * if line("''\"") > 1 && line("'\"") <= line("$") | exec "normal! g'\"" | endif
-
 " edit .vimrc after source vimrc
 "autocmd bufwritepost $MYVIMRC source $MYVIMRC
 "
@@ -388,7 +384,8 @@ call plug#begin('~/.vim/plugged')
 "   - Avoid using standard Vim directory names like 'plugin'
 
 
-colorscheme wildcharm
+" colorscheme wildcharm
+colorscheme darkblue
 """****** @vim-airline ******
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 """------ @vim-airline ------
