@@ -765,6 +765,17 @@ augroup qs_colors
   autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 augroup END
 
+"""****** @vim-obsession ******
+Plug 'tpope/vim-obsession'
+"""****** @vim-obsession ******
+"" save vim session
+
+
+"""****** @vim-tmux ******
+Plug 'tmux-plugins/vim-tmux'
+"""------ @vim-tmux -----
+"" Vim plugin for .tmux.conf
+
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
