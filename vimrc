@@ -777,6 +777,15 @@ Plug 'tmux-plugins/vim-tmux'
 "" Vim plugin for .tmux.conf
 
 
+"""****** @fzf ******
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+"""------ @fzf -----
+nnoremap <silent> <c-f> :Files <CR>
+
+set rtp+=/opt/homebrew/opt/fzf
+
+
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
