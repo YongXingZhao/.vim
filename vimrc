@@ -786,6 +786,10 @@ nnoremap <silent> <c-f> :Files <CR>
 set rtp+=/opt/homebrew/opt/fzf
 
 
+"""****** @vim-paragraph-motion ******
+Plug 'dbakker/vim-paragraph-motion'
+"""------ @vim-paragraph-motion -----
+
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
